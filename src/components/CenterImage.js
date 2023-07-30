@@ -40,13 +40,13 @@ const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages
         <div
           style={{
             position: "absolute",
-            top: "24%",
-            left: "27%",
+            top: "20%",
+            left: "22%",
             background: "rgba(255, 255, 255, 0.7)",
             padding: "20px",
             borderRadius: "10px",
-            maxWidth: "140px",
-            maxHeight: "110px",
+            maxWidth: "220px",
+            maxHeight: "180px",
             overflow: "auto",
           }}
         >
@@ -57,14 +57,14 @@ const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages
                 <div className="message__chats" key={generateRandomKey()} ref={lastPatientMessageRef}>
                   {/* <p className='sender__name'>You</p> */}
                   <div>
-                    <p>{message}</p>
+                    <p style={{ fontSize: "18px" }}>{message}</p>
                   </div>
                 </div>
               ) : (
                 <div className="message__chats" key={generateRandomKey()}>
                   {/* <p>{message.name}</p> */}
                   <div c>
-                    <p>{message}</p>
+                    <p style={{ fontSize: "18px" }}>{message}</p>
                   </div>
                 </div>
               )
@@ -163,13 +163,13 @@ const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages
             message === localStorage.getItem("userName") ? (
               <div className="message__chats" key={generateRandomKey()}>
                 <div className="message__sender">
-                  <p>{message}</p>
+                  <p>{`Looks like you have ${message}`}</p>
                 </div>
               </div>
             ) : (
               <div className="message__chats" key={generateRandomKey()}>
                 <div className="message__recipient">
-                  <p>{message}</p>
+                  <p>{`Looks like you have ${message}`}</p>
                 </div>
               </div>
             )

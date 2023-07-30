@@ -31,8 +31,8 @@ const ChatPage = ({ socket }) => {
         setMessages([...messages, data.patient])
         setPatientMessages([...patientMessages, data.patient])
       }else if(data?.brain){
-        const formattedData = data?.brain.map(([condition, value]) => `${condition}: ${value}`).join("\n");
-        console.log("formatted Data ",formattedData )
+        // const formattedData = data?.brain.map(([condition, value]) => `${condition}: ${value}`).join("\n");
+        // console.log("formatted Data ",formattedData )
         setBrainMessages([...brainMessages, data.brain])
       }else if(data?.condition) {
         setConditionMessages([...conditonMessages, data.condition])

@@ -38,14 +38,14 @@ const ChatBody = ({ messages, typingStatus, lastMessageRef, eventT }) => {
             <div className="message__chats" key={generateRandomKey()}>
               {isDoctor ? (
                 <>
-                  <p className='sender__name'>Doctor</p>
+                  {/* <p className='sender__name'>Doctor</p> */}
                   <div className='message__sender'>
                     <p>{message}</p>
                   </div>
                 </>
               ) : (
                 <>
-                  <p>{localStorage.getItem("userName")}</p>
+                  {/* <p>{localStorage.getItem("userName")}</p> */}
                   <div className='message__recipient'>
                     <p>{message}</p>
                   </div>
