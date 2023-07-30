@@ -33,7 +33,7 @@ const ChatPage = ({ socket }) => {
       }else if(data?.brain){
         // const formattedData = data?.brain.map(([condition, value]) => `${condition}: ${value}`).join("\n");
         // console.log("formatted Data ",formattedData )
-        setBrainMessages([...brainMessages, data.brain])
+        setBrainMessages([data.brain])
       }else if(data?.condition) {
         setConditionMessages([...conditonMessages, data.condition])
       }
