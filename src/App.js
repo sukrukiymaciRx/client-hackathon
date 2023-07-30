@@ -8,7 +8,7 @@ socket.onopen = () => {
   console.log("WebSocket connection established.");
   const messageToSend = {
     type: "message",
-    content: "Hello, server! This is a test message."
+    content: "Patient presents with abdominal cramps and nausea. He has a fever, but is feeling dizzy"
   };
   
   socket.send(JSON.stringify(messageToSend));
