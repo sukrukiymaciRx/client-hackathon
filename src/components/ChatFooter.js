@@ -6,7 +6,7 @@ const ChatFooter = ({socket}) => {
 
     const handleSendMessage = (e) => {
         e.preventDefault()
-        if(message.trim() && localStorage.getItem("userName")) {
+        // if(message.trim() && localStorage.getItem("userName")) {
         // socket.emit("message", 
         //     {
         //     text: message, 
@@ -15,7 +15,13 @@ const ChatFooter = ({socket}) => {
         //     socketID: socket.id
         //     }
         // )
-        }
+        const messageToSend = {
+          type: "message",
+          content: message
+        };
+        
+        socket.send(JSON.stringify(messageToSend));
+        // }
         setMessage("")
     }
   return (

@@ -1,8 +1,9 @@
 import React from "react";
 import backgroundImage from "../doctor-patient.jpeg";
 import bubble from "../bubble.png"
+const generateRandomKey = () => Math.random().toString(36).substr(2, 10);
 
-const CenterImage = ({ messages, lastMessageRef }) => {
+const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages,   lastPatientMessageRef, lastDoctorMessageRef, }) => {
   return (
     <div
       style={{
@@ -49,20 +50,21 @@ const CenterImage = ({ messages, lastMessageRef }) => {
             overflow: "auto",
           }}
         >
+          {/* Brain Messages*/}
           <div>
-            {messages.map((message) =>
-              message.name === localStorage.getItem("userName") ? (
-                <div className="message__chats" key={message.id}>
+            {patientMessages.map((message) =>
+              message === localStorage.getItem("userName") ? (
+                <div className="message__chats" key={generateRandomKey()} ref={lastPatientMessageRef}>
                   {/* <p className='sender__name'>You</p> */}
                   <div>
-                    <p>{message.text}</p>
+                    <p>{message}</p>
                   </div>
                 </div>
               ) : (
-                <div className="message__chats" key={message.id}>
+                <div className="message__chats" key={generateRandomKey()}>
                   {/* <p>{message.name}</p> */}
                   <div c>
-                    <p>{message.text}</p>
+                    <p>{message}</p>
                   </div>
                 </div>
               )
@@ -86,25 +88,25 @@ const CenterImage = ({ messages, lastMessageRef }) => {
         }}
       >
         <div>
-          {messages.map((message) =>
-            message.name === localStorage.getItem("userName") ? (
-              <div className="message__chats" key={message.id}>
+          {doctorMessages.map((message) =>
+            message === localStorage.getItem("userName") ? (
+              <div className="message__chats" key={generateRandomKey()}>
                 {/* <p className='sender__name'>You</p> */}
                 <div className="message__sender">
-                  <p>{message.text}</p>
+                  <p>{message}</p>
                 </div>
               </div>
             ) : (
-              <div className="message__chats" key={message.id}>
+              <div className="message__chats" key={generateRandomKey()}>
                 {/* <p>{message.name}</p> */}
-                <div className="message__recipient">
-                  <p>{message.text}</p>
+                <div className="message__sender">
+                  <p>{message}</p>
                 </div>
               </div>
             )
           )}
         </div>
-        <div ref={lastMessageRef} />
+        <div ref={lastDoctorMessageRef} />
       </div>
       <div
         style={{
@@ -120,25 +122,25 @@ const CenterImage = ({ messages, lastMessageRef }) => {
         }}
       >
         <div>
-          {messages.map((message) =>
-            message.name === localStorage.getItem("userName") ? (
-              <div className="message__chats" key={message.id}>
+          {patientMessages.map((message) =>
+            message === localStorage.getItem("userName") ? (
+              <div className="message__chats" key={generateRandomKey()}>
                 {/* <p className='sender__name'>You</p> */}
                 <div className="message__sender">
-                  <p>{message.text}</p>
+                  <p>{message}</p>
                 </div>
               </div>
             ) : (
-              <div className="message__chats" key={message.id}>
+              <div className="message__chats" key={generateRandomKey()}>
                 {/* <p>{message.name}</p> */}
                 <div className="message__recipient">
-                  <p>{message.text}</p>
+                  <p>{message}</p>
                 </div>
               </div>
             )
           )}
         </div>
-        <div ref={lastMessageRef} />
+        <div ref={lastPatientMessageRef} />
       </div>
       <div
         style={{
@@ -154,25 +156,26 @@ const CenterImage = ({ messages, lastMessageRef }) => {
           overflow: "auto",
         }}
       >
-        <div>
+        {/* Disease - Condition */}
+        
+        {/* <div>
           {messages.map((message) =>
-            message.name === localStorage.getItem("userName") ? (
-              <div className="message__chats" key={message.id}>
-                {/* <p className='sender__name'>You</p> */}
+            message === localStorage.getItem("userName") ? (
+              <div className="message__chats" key={generateRandomKey()}>
                 <div className="message__sender">
-                  <p>{message.text}</p>
+                  <p>{message}</p>
                 </div>
               </div>
             ) : (
-              <div className="message__chats" key={message.id}>
-                {/* <p>{message.name}</p> */}
+              <div className="message__chats" key={generateRandomKey()}>
                 <div className="message__recipient">
-                  <p>{message.text}</p>
+                  <p>{message}</p>
                 </div>
               </div>
             )
           )}
         </div>
+         */}
         <div ref={lastMessageRef} />
       </div>
     </div>
@@ -233,14 +236,14 @@ export default CenterImage;
 //           <div>
 //             {messages.map((message) =>
 //               message.name === localStorage.getItem("userName") ? (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p className='sender__name'>You</p> */}
 //                   <div  >
 //                     <p>{message.text}</p>
 //                   </div>
 //                 </div>
 //               ) : (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p>{message.name}</p> */}
 //                   <div className="message__recipient">
 //                     <p>{message.text}</p>
@@ -269,14 +272,14 @@ export default CenterImage;
 //           <div>
 //             {messages.map((message) =>
 //               message.name === localStorage.getItem("userName") ? (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p className='sender__name'>You</p> */}
 //                   <div className="message__sender">
 //                     <p>{message.text}</p>
 //                   </div>
 //                 </div>
 //               ) : (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p>{message.name}</p> */}
 //                   <div className="message__recipient">
 //                     <p>{message.text}</p>
@@ -303,14 +306,14 @@ export default CenterImage;
 //           <div>
 //             {messages.map((message) =>
 //               message.name === localStorage.getItem("userName") ? (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p className='sender__name'>You</p> */}
 //                   <div className="message__sender">
 //                     <p>{message.text}</p>
 //                   </div>
 //                 </div>
 //               ) : (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p>{message.name}</p> */}
 //                   <div className="message__recipient">
 //                     <p>{message.text}</p>
@@ -338,14 +341,14 @@ export default CenterImage;
 //           <div>
 //             {messages.map((message) =>
 //               message.name === localStorage.getItem("userName") ? (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p className='sender__name'>You</p> */}
 //                   <div className="message__sender">
 //                     <p>{message.text}</p>
 //                   </div>
 //                 </div>
 //               ) : (
-//                 <div className="message__chats" key={message.id}>
+//                 <div className="message__chats" key={generateRandomKey()}>
 //                   {/* <p>{message.name}</p> */}
 //                   <div className="message__recipient">
 //                     <p>{message.text}</p>

@@ -6,30 +6,26 @@ const socket = new WebSocket("ws://165.232.134.254:8000/dr_claude");
 
 socket.onopen = () => {
   console.log("WebSocket connection established.");
-  const messageToSend = {
-    type: "message",
-    content: "Patient presents with abdominal cramps and nausea. He has a fever, but is feeling dizzy"
-  };
-  
-  socket.send(JSON.stringify(messageToSend));
+
   socket.onerror = (error) => {
     console.error("WebSocket error:", error);
   };
 };
 
-socket.onmessage = (event) => {
-  const data = JSON.parse(event.data);
-  console.log("data", data)
-  const messageToSend = {
-    type: "message",
-    content: "Hello, server! This is a test message."
-  };
+// socket.onmessage = (event) => {
+//   const data = JSON.parse(event.data);
+//   // console.log(event)
+//   console.log("data", data)
+//   // const messageToSend = {
+//   //   type: "message",
+//   //   content: "Hello, server! This is a test message."
+//   // };
   
-  socket.send(JSON.stringify(messageToSend));
-  socket.onerror = (error) => {
-    console.error("WebSocket error:", error);
-  };
-};
+//   // socket.send(JSON.stringify(messageToSend));
+//   socket.onerror = (error) => {
+//     console.error("WebSocket error:", error);
+//   };
+// };
 
 
 
