@@ -7,6 +7,9 @@ const ChatPage = ({ socket }) => {
   const [messages, setMessages] = useState([]);
   const [patientMessages, setPatientMessages] = useState([]);
   const [doctorMessages, setDoctorMessages] = useState([]);
+  const [brainMessages, setBrainMessages] = useState([]);
+  const [conditonMessages, setConditionMessages] = useState([]);
+
   const [typingStatus, setTypingStatus] = useState("");
   const lastMessageRef = useRef(null);
   const lastPatientMessageRef = useRef(null);
@@ -18,6 +21,7 @@ const ChatPage = ({ socket }) => {
     // socket.on("messageResponse", (data) => setMessages([...messages, data]));
     socket.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      console.log("brain", data)
       setEventT(event)
       if(data?.doctor) { 
         setMessages([...messages, data.doctor])
@@ -26,6 +30,12 @@ const ChatPage = ({ socket }) => {
       else if(data?.patient) {
         setMessages([...messages, data.patient])
         setPatientMessages([...patientMessages, data.patient])
+      }else if(data?.brain){
+        const formattedData = data?.brain.map(([condition, value]) => `${condition}: ${value}`).join("\n");
+        console.log("formatted Data ",formattedData )
+        setBrainMessages([...brainMessages, data.brain])
+      }else if(data?.condition) {
+        setConditionMessages([...conditonMessages, data.condition])
       }
       console.log("data", data)
       // const messageToSend = {
@@ -63,7 +73,8 @@ const ChatPage = ({ socket }) => {
         <ChatFooter socket={socket} />
       </div>
       <CenterImage lastPatientMessageRef={lastPatientMessageRef} lastDoctorMessageRef={lastDoctorMessageRef}
- patientMessages={patientMessages} doctorMessages={doctorMessages} messages={messages} lastMessageRef={lastMessageRef}/>
+      conditonMessages={conditonMessages}
+ patientMessages={patientMessages} doctorMessages={doctorMessages} messages={messages} lastMessageRef={lastMessageRef} brainMessages={brainMessages}/>
     </div>
   );
 };

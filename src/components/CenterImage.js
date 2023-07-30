@@ -3,7 +3,7 @@ import backgroundImage from "../doctor-patient.jpeg";
 import bubble from "../bubble.png"
 const generateRandomKey = () => Math.random().toString(36).substr(2, 10);
 
-const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages,   lastPatientMessageRef, lastDoctorMessageRef, }) => {
+const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages,   lastPatientMessageRef, lastDoctorMessageRef, brainMessages, conditonMessages}) => {
   return (
     <div
       style={{
@@ -52,7 +52,7 @@ const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages
         >
           {/* Brain Messages*/}
           <div>
-            {patientMessages.map((message) =>
+            {brainMessages.map((message) =>
               message === localStorage.getItem("userName") ? (
                 <div className="message__chats" key={generateRandomKey()} ref={lastPatientMessageRef}>
                   {/* <p className='sender__name'>You</p> */}
@@ -158,8 +158,8 @@ const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages
       >
         {/* Disease - Condition */}
         
-        {/* <div>
-          {messages.map((message) =>
+        <div>
+          {conditonMessages.map((message) =>
             message === localStorage.getItem("userName") ? (
               <div className="message__chats" key={generateRandomKey()}>
                 <div className="message__sender">
@@ -175,7 +175,7 @@ const CenterImage = ({ messages, lastMessageRef, patientMessages, doctorMessages
             )
           )}
         </div>
-         */}
+        
         <div ref={lastMessageRef} />
       </div>
     </div>
