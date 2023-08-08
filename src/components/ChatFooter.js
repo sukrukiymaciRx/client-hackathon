@@ -2,26 +2,15 @@ import React, {useState} from 'react'
 
 const ChatFooter = ({socket}) => {
     const [message, setMessage] = useState("")
-    // const handleTyping = () => socket.emit("typing",`${localStorage.getItem("userName")} is typing`)
 
     const handleSendMessage = (e) => {
         e.preventDefault()
-        // if(message.trim() && localStorage.getItem("userName")) {
-        // socket.emit("message", 
-        //     {
-        //     text: message, 
-        //     name: localStorage.getItem("userName"), 
-        //     id: `${socket.id}${Math.random()}`,
-        //     socketID: socket.id
-        //     }
-        // )
         const messageToSend = {
           type: "message",
           content: message
         };
         
         socket.send(JSON.stringify(messageToSend));
-        // }
         setMessage("")
     }
   return (
@@ -33,7 +22,6 @@ const ChatFooter = ({socket}) => {
             className='message' 
             value={message} 
             onChange={e => setMessage(e.target.value)}
-            // onKeyDown={handleTyping}
             />
             <button className="sendBtn">SEND</button>
         </form>

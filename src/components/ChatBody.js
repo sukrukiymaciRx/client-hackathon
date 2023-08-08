@@ -1,16 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 
-const ChatBody = ({ messages, typingStatus, lastMessageRef, eventT }) => {
+const ChatBody = ({ messages, lastMessageRef, eventT }) => {
   const navigate = useNavigate();
   const counterRef = useRef(0);
 
   useEffect(() => {
     const data = eventT ? JSON.parse(eventT.data) : null;
     if (data?.doctor) {
-      counterRef.current = 0; // Reset the counter to 0 for doctor messages
+      counterRef.current = 0; 
     } else if (data?.patient) {
-      counterRef.current = 1; // Set the counter to 1 for patient messages
+      counterRef.current = 1; 
     }
   }, [eventT]);
 
@@ -32,20 +32,18 @@ const ChatBody = ({ messages, typingStatus, lastMessageRef, eventT }) => {
       <div className='message__container'>
         {messages.map((message) => {
           const isDoctor = counterRef.current === 0;
-          counterRef.current = 1 - counterRef.current; // Toggle the counter
+          counterRef.current = 1 - counterRef.current;
           
           return (
             <div className="message__chats" key={generateRandomKey()}>
               {isDoctor ? (
                 <>
-                  {/* <p className='sender__name'>Doctor</p> */}
                   <div className='message__sender'>
                     <p>{message}</p>
                   </div>
                 </>
               ) : (
                 <>
-                  {/* <p>{localStorage.getItem("userName")}</p> */}
                   <div className='message__recipient'>
                     <p>{message}</p>
                   </div>
@@ -55,7 +53,6 @@ const ChatBody = ({ messages, typingStatus, lastMessageRef, eventT }) => {
           );
         })}
         <div className='message__status'>
-          {/* <p>{typingStatus}</p> */}
         </div>
         <div ref={lastMessageRef} />
       </div>
